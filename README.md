@@ -29,7 +29,7 @@ A living specification documenting Python coding standards at Amplytica
 All new software shall be written to support Python3 only as Python2 is now considered legacy. The Python3 baseline is version **3.4** for all new software. Legacy software may be maintained at its current version or ported to Python3 at management's discresion.
 
 ### Style Guides
-In general follow [PEP8](https://www.python.org/dev/peps/pep-0008/) and the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html) (which is superset of PEP8). **Read These!** **Follow These!**
+In general follow [PEP8](https://www.python.org/dev/peps/pep-0008/) and the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html) (which is superset of PEP8). **Read These!** **Follow These!**
 
 #### Style Guide Exceptions
 The following are practice we follow which are exceptions to the above style guides:
