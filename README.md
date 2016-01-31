@@ -3,7 +3,7 @@ Python_Coding_Standards
 A living specification documenting Python coding standards at Amplytica
 -----------------------------------------------------------------------
 
-#### The Zen of Python
+#### The Zen of Python (PEP20)
 
     Beautiful is better than ugly.
     Explicit is better than implicit.
@@ -26,20 +26,19 @@ A living specification documenting Python coding standards at Amplytica
     Namespaces are one honking great idea -- let's do more of those!
     
 ### Python 2 vs 3
-All new software shall be written to support Python3 only as Python2 is now considered legacy. The Python3 baseline is version **3.4** for all new software. Legacy software may be maintained at its current version or ported to Python3 at management's discresion.
+All new software shall be written to support Python3 only as Python2 is now considered legacy. The Python3 baseline is version **3.4** for all new software. Legacy software may be maintained at its current version or ported to Python 3.4 at management's discresion.
 
 ### Style Guides
 In general follow [PEP8](https://www.python.org/dev/peps/pep-0008/) and the [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html) (which is superset of PEP8). **Read These!** **Follow These!**
 
 #### Style Guide Exceptions
-The following are practice we follow which are exceptions to the above style guides:
+The following are practices we follow which are exceptions to the above style guides:
 
 - **Shebang**
-	- Shebangs should be in the format  ```#!/usr/bin/env python3``` not ```#!/usr/bin/python3``` as many system's CPython interpreter is found in a different location than ***/usr/bin/***  
+	- Shebangs should be in the format  ```#!/usr/bin/env python3``` not ```#!/usr/bin/python3``` as many system's CPython interpreters may be found in a different locations than ***/usr/bin/***  
 
 ### File Header Docstring
 All files should contain a file header docstring directly below the shebang in the format below:
-
 
 ```
 #!/usr/bin/env python
@@ -70,11 +69,11 @@ import argparse
 #### Use functional programming paradigms
 In a functional program, input flows through a set of functions. Each function operates on its input and produces some output. Functional style discourages functions with side effects that modify internal state or make other changes that aren’t visible in the function’s return value. Functions that have no side effects at all are called purely functional. Avoiding side effects means not using data structures that get updated as a program runs; every function’s output must only depend on its input.
 
-Take a look at the [Functional Programming](https://docs.python.org/3.4/howto/functional.html) section of the Python documentation.
+Take a look at the [Functional Programming](https://docs.python.org/3.4/howto/functional.html) section of the Python language documentation.
  
 
 #### Store complex data structures as objects for improved readability
-For example the code below involves a relatively complex filtering algorithm in which data is passed into the function via a list of lists where the outer list is a list of Hidden Markov Model hits and the inner list is a list of a particular hit's attributes. The code ```AlignmentOneLength = RowOne[-2] - RowOne[-3]``` requires the developer to remember what attribute is at what index inside the inner list which can lead to confusion and potential bugs.  
+The example code below involves a relatively complex filtering algorithm in which data is passed into the function via a list of lists where the outer list is a list of Hidden Markov Model matchs and the inner list is a list of a particular match's attributes. The code ```AlignmentOneLength = RowOne[-2] - RowOne[-3]``` requires the developer to remember what attribute is at what index inside the inner list which can lead to confusion and potential bugs.  
 
 ```
 while i < (len(HMMHitTable) - 1):
@@ -97,7 +96,7 @@ while i < (len(HMMHitTable) - 1):
 		i += 1
 ```
 
-One can defining the parameters of a HMM hit as an object's properties.  
+One can define the parameters of a HMM hit as an object's properties.  
 
 ```
 class HMMHit(object):
@@ -115,7 +114,7 @@ class HMMHit(object):
 		self.hmm_coverage = float(self.hmm_overlap) / float(hmm_length)
 ```
 
-This allows us to have more explicit readable code. For example the code:
+This allows us to have more explicit readable code. For example the code
 
 ```overlap_between_hits = hit_one.ali_to - hit_two.ali_from``` 
 
@@ -127,7 +126,7 @@ AlignmentTwoLength = RowTwo[-2] - RowTwo[-3]  # RowTwo AliTo - AliFrom
 Overlap = RowOne[-2] - RowTwo[-3]  # RowOne AliTo -  RowTwo AliFrom
 ```  
 
-Using objects to store semistructured data make your code more readable and concise as seen below: 
+Using objects to store semistructured data makes your code more readable and concise as seen below: 
 
 ```
 while i < (len(hmm_hit_list) - 1):
