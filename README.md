@@ -67,8 +67,13 @@ import argparse
 
 ### Other Recommendations
 
-#### Store complex data structures as objects for improved readability
+#### Use functional programming paradigms
+In a functional program, input flows through a set of functions. Each function operates on its input and produces some output. Functional style discourages functions with side effects that modify internal state or make other changes that aren’t visible in the function’s return value. Functions that have no side effects at all are called purely functional. Avoiding side effects means not using data structures that get updated as a program runs; every function’s output must only depend on its input.
 
+Take a look at the [Functional Programming](https://docs.python.org/3.4/howto/functional.html) section of the Python documentation.
+ 
+
+#### Store complex data structures as objects for improved readability
 For example the code below involves a relatively complex filtering algorithm in which data is passed into the function via a list of lists where the outer list is a list of Hidden Markov Model hits and the inner list is a list of a particular hit's attributes. The code ```AlignmentOneLength = RowOne[-2] - RowOne[-3]``` requires the developer to remember what attribute is at what index inside the inner list which can lead to confusion and potential bugs.  
 
 ```
@@ -142,4 +147,3 @@ while i < (len(hmm_hit_list) - 1):
 					i -= 1  # Resets list index.
 		i += 1
 ``` 
-
